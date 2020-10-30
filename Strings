@@ -1,0 +1,174 @@
+#1 Super Reduced String
+
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the superReducedString function below.
+def superReducedString(s):
+    comp = s
+    for i in comp:
+        if i*2 in s:
+            s= s.replace(i*2,"")
+    if len(s) :
+        return s
+    else:
+        return "Empty String"
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    s = input()
+
+    result = superReducedString(s)
+
+    fptr.write(result + '\n')
+
+    fptr.close()
+
+--------------------------
+#2 Camel Case
+
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the camelcase function below.
+def camelcase(s):
+    c = 1
+    for x in s:
+        if x.isupper():
+            c+= 1 
+    return c
+            
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    s = input()
+
+    result = camelcase(s)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
+
+--------------------------
+#3 Strong Password
+
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the minimumNumber function below.
+def minimumNumber(n, password):
+    numbers = set("0123456789")
+    lower_case = set("abcdefghijklmnopqrstuvwxyz")
+    upper_case = set("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+    special_characters = set("!@#$%^&*()-+")
+    ch=6-n
+    c=4
+    if any([i in numbers for i in password]):
+        c-=1
+    if any([i in lower_case for i in password]):
+        c-=1
+    if any([i in upper_case for i in password]):
+        c-=1
+    if any([i in special_characters for i in password]):
+        c-=1
+    return max(c,ch)
+        
+            
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input())
+
+    password = input()
+
+    answer = minimumNumber(n, password)
+
+    fptr.write(str(answer) + '\n')
+
+    fptr.close()
+
+--------------------------
+#4 Mars Exploration
+
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the marsExploration function below.
+def marsExploration(s):
+    x=int(len(s)/3)
+    c=0
+    y="SOS" *x
+    for i in range(len(s)):
+        if s[i]!=y[i]:
+            c+=1
+    return c
+            
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    s = input()
+
+    result = marsExploration(s)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
+
+--------------------------
+#5 Pangrams
+
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the pangrams function below.
+def pangrams(s):
+    a = str(s.lower())
+    b = a.replace(" ","")
+    alph = "abcdefghijklmnopqrstuvwxyz"
+    for x in alph:
+        if sorted(set(alph)) == sorted(set(b)):
+            return ("pangram")
+        else:
+            return ("not pangram")
+            
+            
+        
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    s = input()
+
+    result = pangrams(s)
+
+    fptr.write(result + '\n')
+
+    fptr.close()
+
+--------------------------
